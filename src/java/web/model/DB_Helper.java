@@ -89,7 +89,7 @@ public class DB_Helper {
     }
 
     //取得物件
-    public static Iterator getDataSet(String HQL) {
+    public static List getDataSet(String HQL) {
         /*透過SessionFactory 取得 Session 實例*/
         SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
         /*取得資料庫連線*/
@@ -98,8 +98,7 @@ public class DB_Helper {
         /*開啟一個會話操作*/
         Transaction tx = sess.beginTransaction();
         List data = query.list();
-        Iterator iterator = data.iterator();
         sess.close();
-        return iterator;
+        return data;
     }
 }

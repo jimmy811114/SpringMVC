@@ -59,7 +59,8 @@ public class MainController {
     //產生陣列
     @RequestMapping(value = "/showArray")
     public String showArray(Model model) {
-        Iterator iterator = DB_Helper.getDataSet("from Table order by id desc");
+        List list = DB_Helper.getDataSet("from Table order by id desc");
+        Iterator iterator = list.iterator();
         List<Table> tables = new ArrayList();
         while (iterator.hasNext()) {
             Table table = (Table) iterator.next();
@@ -85,8 +86,8 @@ public class MainController {
         if (request.getSession().getAttribute("table") != null) {
             Table table = (Table) request.getSession().getAttribute("table");
             model.addAttribute("status", table.getTest());
-        }else{
-             model.addAttribute("status", "未登入");
+        } else {
+            model.addAttribute("status", "未登入");
         }
         return "showData";
     }
@@ -94,8 +95,8 @@ public class MainController {
     //測試HQL語句
     @RequestMapping(value = "/test01")
     public String test01(Model model, @RequestParam String test) {
-        Iterator iterator = DB_Helper.getDataSet("from Table table where table.test = '" + test + "'");
-        if (iterator.hasNext()) {
+        List list = DB_Helper.getDataSet("from Table table where table.test = '" + test + "'");
+        if (list.size() > 0) {
             model.addAttribute("status", "true");
         } else {
             model.addAttribute("status", "false");
@@ -106,7 +107,8 @@ public class MainController {
     //測試PK table
     @RequestMapping(value = "/test02")
     public String test02(Model model, @RequestParam String member_s, @RequestParam String member_pwd) {
-        Iterator iterator = DB_Helper.getDataSet("from Member m where m.member='" + member_s + "'");
+        List list = DB_Helper.getDataSet("from Member m where m.member='" + member_s + "'");
+        Iterator iterator = list.iterator();
         boolean isV = false;
         if (!iterator.hasNext()) {
             isV = true;
