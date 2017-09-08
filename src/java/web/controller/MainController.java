@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import web.entity.Member;
 import web.entity.Table;
+import web.function.WebFunction;
 import web.model.DB_Helper;
 
 /**
@@ -127,6 +129,22 @@ public class MainController {
         Member member_s = (Member) DB_Helper.getDataByStr(Member.class, member);
         model.addAttribute("status", member_s.getPwd());
         return "showData";
+    }
+
+    //HQL語句測試_alert
+    @RequestMapping(value = "/test04")
+    public void test04(HttpServletResponse response) {
+        List<Member> data = DB_Helper.getDataSet("from Member");
+        data.forEach((data1) -> {
+            System.out.println(data1.getPwd());
+        });
+        WebFunction.showAlert(response, "成功", "index.jsp");
+    }
+
+    //顯示HTML
+    @RequestMapping(value = "/test05")
+    public void test05(HttpServletResponse response) {
+        WebFunction.showHTML(response, "成功");
     }
 
     //取得資料

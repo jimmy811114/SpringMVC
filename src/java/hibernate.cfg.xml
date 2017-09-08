@@ -43,9 +43,10 @@ Contributor(s):
   <session-factory>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test?useUnicode=true&amp;characterEncoding=UTF-8</property>
+    <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/test?useUnicode=true&amp;amp;characterEncoding=UTF-8</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">x22122327</property>
+    <mapping resource="web/entity/Json.hbm.xml"/>
     <mapping resource="web/entity/Member.hbm.xml"/>
     <mapping resource="web/entity/Table.hbm.xml"/>
   </session-factory>

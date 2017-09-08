@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 2017/9/7 ?????? 02:37:27 by Hibernate Tools 4.3.1 -->
+<!-- Generated 2017/9/8 ?????? 11:40:04 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
     <class name="web.entity.Member" table="member" catalog="test" optimistic-lock="version">
         <id name="member" type="string">

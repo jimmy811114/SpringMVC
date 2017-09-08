@@ -1,5 +1,5 @@
 package web.entity;
-// Generated 2017/9/7 下午 02:37:27 by Hibernate Tools 4.3.1
+// Generated 2017/9/8 上午 11:40:03 by Hibernate Tools 4.3.1
 
 
 
