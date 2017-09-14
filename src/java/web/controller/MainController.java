@@ -5,15 +5,21 @@
  */
 package web.controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import web.entity.Json;
 import web.entity.Member;
 import web.entity.Table;
 import web.function.WebFunction;
@@ -144,6 +150,21 @@ public class MainController {
     //顯示HTML
     @RequestMapping(value = "/test05")
     public void test05(HttpServletResponse response) {
+        WebFunction.showHTML(response, "成功");
+    }
+
+    //顯示HTML
+    @RequestMapping(value = "/addJson")
+    public void addJson(HttpServletResponse response) {
+        JSONObject obj = new JSONObject();
+        try {
+            obj.put("key", "123");
+            Json json = new Json();
+            json.setData(obj.toString());
+            DB_Helper.saveData(json);
+        } catch (JSONException ex) {
+            Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         WebFunction.showHTML(response, "成功");
     }
 
