@@ -28,12 +28,10 @@ public class DB_Helper {
         try {
             sessionFactory = HibernateUtil.getSessionFactory();
             sess = sessionFactory.openSession();
-            sess.flush();
             /*開啟一個會話操作*/
             Transaction tx = sess.beginTransaction();
             /*將 user 物件映射到資料庫中對應的表格儲存*/
             sess.save(data);
-            sess.refresh(data);
             tx.commit();
         } catch (HibernateException e) {
             System.out.println(e.toString());
@@ -53,7 +51,6 @@ public class DB_Helper {
         try {
             sessionFactory = HibernateUtil.getSessionFactory();
             sess = sessionFactory.openSession();
-            sess.flush();
             /*開啟一個會話操作*/
             Transaction tx = sess.beginTransaction();
             /*將 user 物件映射到資料庫中對應的表格儲存*/
@@ -77,7 +74,6 @@ public class DB_Helper {
         try {
             sessionFactory = HibernateUtil.getSessionFactory();
             sess = sessionFactory.openSession();
-            sess.flush();
             /*開啟一個會話操作*/
             Transaction tx = sess.beginTransaction();
             /*將 user 物件映射到資料庫中對應的表格儲存*/
@@ -102,10 +98,8 @@ public class DB_Helper {
         try {
             sessionFactory = HibernateUtil.getSessionFactory();
             sess = sessionFactory.openSession();
-            sess.flush();
             /*將 user 物件映射到資料庫中對應的表格儲存*/
             obj = sess.get(type, id);
-            sess.refresh(obj);
         } catch (HibernateException e) {
             System.out.println(e.toString());
         } finally {
@@ -127,9 +121,7 @@ public class DB_Helper {
             sessionFactory = HibernateUtil.getSessionFactory();
             sess = sessionFactory.openSession();
             /*將 user 物件映射到資料庫中對應的表格儲存*/
-            sess.flush();
             obj = sess.get(type, id);
-            sess.refresh(obj);
         } catch (HibernateException e) {
             System.out.println(e.toString());
         } finally {
@@ -150,7 +142,6 @@ public class DB_Helper {
         try {
             sessionFactory = HibernateUtil.getSessionFactory();
             sess = sessionFactory.openSession();
-            sess.flush();
             Query query = sess.createQuery(HQL);
             data = query.list();
         } catch (HibernateException e) {
